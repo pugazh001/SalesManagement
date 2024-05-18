@@ -1,0 +1,110 @@
+mongodb+srv://pugazhenthi27s:TfjQz9CwlrbNiMBI@cluster0.wtpxspq.mongodb.net/p2?retryWrites=true&w=majority&appName=Cluster0
+
+  <TableRow key={row.id}   isUsers={localStorage.getItem("userId")===row.user}>
+                            <TableCell>{index + 1}</TableCell>
+                            <TableCell>{row.name}</TableCell>
+                            <TableCell>{row.email}</TableCell>
+                           
+                            <TableCell>{row.mobile}</TableCell>
+                            <TableCell>{row.productOfInterst}</TableCell>
+                            <TableCell>{row.updatedAt}</TableCell>
+                          {  isUser===`${row.user}` &&
+                               <TableCell >
+                               <IconButton aria-label="edit" onClick={handleEdit}>
+                                   <EditIcon />
+                               </IconButton>
+                               <IconButton aria-label="delete" onClick={handleDelete}>
+                                   <DeleteIcon />
+                               </IconButton>
+                           </TableCell>
+                          }  
+                        </TableRow>
+
+
+{ !isSignup &&<> {
+          !isSignup &&userType=="admin"?
+          <> <TextField name='email' onChange={handleChange} value={input.email} placeholder='admin' type='email' margin='normal'></TextField>
+          <TextField name='password' onChange={handleChange} value={input.password} placeholder='password' type='password' margin='normal'></TextField>
+          <Button sx={{marginTop:2}} variant='contained' color='info' onClick={handleSubmit}>Submit</Button>
+          <Button sx={{marginTop:2}} color='warning' onClick={()=>setisSignup(!isSignup)}>{isSignup?"login":"signup"}</Button>
+          </>: <> <TextField name='email' onChange={handleChange} value={input.email} placeholder='email' type='email' margin='normal'></TextField>
+          <TextField name='password' onChange={handleChange} value={input.password} placeholder='password' type='password' margin='normal'></TextField>
+          <Button sx={{marginTop:2}} variant='contained' color='info' onClick={handleSubmit}>Submit</Button>
+          <Button sx={{marginTop:2}} color='warning' onClick={()=>setisSignup(!isSignup)}>{isSignup?"login":"signup"}</Button>
+          </>
+        } </>}\
+
+
+     { !isSignup &&
+        <div> <label>
+                <input
+                    type="radio"
+                    value="user"
+                    checked={userType === "user"}
+                    onChange={(e)=>setUserType(e.target.value)}
+                />
+                user
+            </label>
+            <label>
+                <input
+                    type="radio"
+                    value="admin"
+                    checked={userType=== "admin"}
+                    onChange={(e)=>setUserType(e.target.value)}
+                />
+                admin
+            </label></div>
+      }
+
+
+
+
+const navigate=useNavigate();
+  const[inputs,setInputs]=useState({
+    
+  })
+  const handleChange=(e)=>{
+    setInputs((preState)=>({
+      ...preState,
+      [e.target.name]:e.target.value
+      
+
+    }))
+  }
+  const [blog,setBlogs]=useState();
+  const id=useParams().id;
+  console.log(id);
+  const fetchDetails=async()=>{
+    const res=await axios.get(`http://localhost:5000/api/blog/${id}`)
+    .catch(err=>console.log(err));
+    const data=res.data;
+    return data;
+  }
+  useEffect(()=>{
+
+    fetchDetails().then(data=>{
+      setBlogs(data.blog)
+      setInputs({title:data.blog.title,description:data.blog.description,imageURL:data.blog.image})
+    })
+
+
+  },[id])
+  console.log("id change",blog);
+  
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    console.log(inputs);
+    sendRequest().then(data=>console.log(data)).then(()=>navigate('/blogs/'))
+
+
+  }
+  const sendRequest=async()=>{
+    const res=axios.put(`http://localhost:5000/api/blog/update/${id}`,{
+      title:inputs.title,
+      description:inputs.description
+        
+    }).catch(err=>console.log(err))
+    const data=res.data;
+    return data
+  }
