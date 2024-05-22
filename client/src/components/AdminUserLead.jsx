@@ -62,7 +62,7 @@ function SalesLead() {
       }))
     };
     const sendRequestAddLead=async()=>{
-        const res=await axios.post("http://localhost:5551/api/lead/add",{
+        const res=await axios.post("https://sales-management-kappa.vercel.app/api/lead/add",{
           name:input.name,
           email:input.email,
           mobile:input.mobile,
@@ -84,7 +84,7 @@ function SalesLead() {
     };
     
   const sendRequest=async()=>{
-    const res=await axios.get("http://localhost:5551/api/lead")
+    const res=await axios.get("https://sales-management-kappa.vercel.app/api/lead")
     .catch(err=>console.log("err is get to the lead",err))
     const data=await res.data
     console.log(data);
