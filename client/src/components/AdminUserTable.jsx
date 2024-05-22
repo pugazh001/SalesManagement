@@ -23,7 +23,7 @@ function AdminUserTable({key,isUser,Sno,name,email,mobile,productOfInterest,date
 
   }
   const deleteRequest=async()=>{
-    const res=await axios.delete(`http://localhost:5551/api/lead/${id}`).catch(err=>console.log(err));
+    const res=await axios.delete(`https://sales-management-kappa.vercel.app/api/lead/${id}`).catch(err=>console.log(err));
     const data=await res.data;
     return data
   }
