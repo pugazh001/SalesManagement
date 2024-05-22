@@ -8,13 +8,12 @@ const user=require("./routes/user")
 
 
 const app=express();
-app.use(cors(
-    {
-        origin:["https://sales-management-frontend-six.vercel.app"],
-        methods:["POST","GET","PUT","DELETE"],
-        credentials:true
-    }
-));
+
+app.use(cors({
+  origin: 'https://sales-management-frontend-six.vercel.app', // Allow this specific origin
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow these HTTP methods
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+}));
 app.options('/api/user/signup', (req, res) => {
   res.header('Access-Control-Allow-Origin', 'https://sales-management-frontend-six.vercel.app');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
