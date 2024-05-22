@@ -10,7 +10,7 @@ const user=require("./routes/user")
 const app=express();
 app.use(cors(
     {
-        origin:["https://sales-management-kappa.vercel.app/"],
+        origin:[""],
         method:["POSST","GET","PUT","DELETE"],
         credentials:true
     }
