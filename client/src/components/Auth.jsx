@@ -27,7 +27,7 @@ function Auth() {
 
   }
   const sendRequest=async(type="login")=>{
-    const res=await axios.post(`http://localhost:5551/api/user/${type}`,{
+    const res=await axios.post(`https://sales-management-kappa.vercel.app/api/user/${type}`,{
      name:input.name,
      email:input.email,
      password:input.password
