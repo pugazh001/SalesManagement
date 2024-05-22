@@ -14,7 +14,7 @@ app.use(cors(
         methods:["POST","GET","PUT","DELETE"],
         credentials:true
     }
-))
+));
 app.use(express.json());
 
 
@@ -27,9 +27,9 @@ app.use('/api/user',user)
 
 
 //const PORT=5551;
-mongoose.connect('mongodb+srv://pugazhenthi27s:TfjQz9CwlrbNiMBI@cluster0.wtpxspq.mongodb.net/sales?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://pugazhenthi27s:TfjQz9CwlrbNiMBI@cluster0.wtpxspq.mongodb.net/deploy?retryWrites=true&w=majority&appName=Cluster0')
 //.then(()=>app.listen(PORT))
-.then(()=>console.log(`connected mongoDB AND SERVER RUNNNNING `))
-.catch((err)=>{
-    console.log("err is",err);
-});
+//.then(()=>console.log(`connected mongoDB AND SERVER RUNNNNING `))
+//.catch((err)=>{
+//    console.log("err is",err);
+//});
