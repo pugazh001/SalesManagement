@@ -11,7 +11,7 @@ const app=express();
 app.use(cors(
     {
         origin:["https://sales-management-frontend-six.vercel.app"],
-        method:["POSST","GET","PUT","DELETE"],
+        method:["POST","GET","PUT","DELETE"],
         credentials:true
     }
 ))
