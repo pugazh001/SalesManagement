@@ -49,7 +49,7 @@ function UpdateSales() {
 
   }
   const sendRequest=async()=>{
-    const res=axios.put(`http://localhost:5551/api/lead/update/${id}`,{
+    const res=axios.put(`https://sales-management-kappa.vercel.app/api/lead/update/${id}`,{
       name:inputs.name,
       email:inputs.email,
       mobile:inputs.mobile,
