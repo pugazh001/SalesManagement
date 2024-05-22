@@ -14,12 +14,7 @@ app.use(cors({
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow these HTTP methods
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 }));
-app.options('/api/user/signup', (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'https://sales-management-frontend-six.vercel.app');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.send();
-});
+
 
 app.use(express.json());
 
