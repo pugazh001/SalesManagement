@@ -21,7 +21,7 @@ function User() {
 
 
     const sendRequest=async()=>{
-        const res=await axios.get("http://localhost:5551/api/user/")
+        const res=await axios.get("https://sales-management-kappa.vercel.app/api/user/")
         .catch(err=>console.log("err is get to the lead",err))
         const data=await res.data
         console.log(data);
