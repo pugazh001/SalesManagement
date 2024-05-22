@@ -8,7 +8,13 @@ const user=require("./routes/user")
 
 
 const app=express();
-app.use(cors())
+app.use(cors(
+    {
+        origin:["https://deploy-mern-1whq.vercel.app"],
+        method:["POSST","GET","PUT","DELETE"],
+        credentials:true
+    }
+))
 app.use(express.json());
 
 
