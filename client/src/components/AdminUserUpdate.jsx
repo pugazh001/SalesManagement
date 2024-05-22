@@ -23,7 +23,7 @@ function UpdateSales() {
   const id=useParams().id;
   console.log(id);
   const fetchDetails=async()=>{
-    const res=await axios.get(`http://localhost:5551/api/lead/${id}`)
+    const res=await axios.get(`https://sales-management-kappa.vercel.app/api/lead/${id}`)
     .catch(err=>console.log(err));
     const data=res.data;
     console.log("dats",data);
@@ -49,7 +49,7 @@ function UpdateSales() {
 
   }
   const sendRequest=async()=>{
-    const res=axios.put(`http://localhost:5551/api/lead/update/${id}`,{
+    const res=axios.put(`https://sales-management-kappa.vercel.app/api/lead/update/${id}`,{
       name:inputs.name,
       email:inputs.email,
       mobile:inputs.mobile,
