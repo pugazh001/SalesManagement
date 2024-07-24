@@ -9,13 +9,15 @@ const user=require("./routes/user")
 
 const app=express();
 
-app.use(cors({
-  origin: 'https://sales-management-frontend-six.vercel.app', // Allow this specific origin
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow these HTTP methods
-  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-}));
+// app.use(cors({
+//   origin: 'https://sales-management-frontend-six.vercel.app', // Allow this specific origin
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow these HTTP methods
+//   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+// }));
 
-
+app.use("/",(req,res,next)=>{
+  res.send("server running successfully..!");
+})
 app.use(express.json());
 
 
